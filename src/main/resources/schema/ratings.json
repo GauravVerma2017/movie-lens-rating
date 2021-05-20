@@ -1,0 +1,9 @@
+{
+  "type" : "struct",
+  "fields" : [
+    { "name" : "user_id",         "type" : "string",    "nullable" : false },
+    { "name" : "movie_id",        "type" : "string",    "nullable" : false },
+    { "name" : "rating",          "type" : "string",     "nullable" : true },
+    { "name" : "timestamp",       "type" : "string", "nullable" : false }
+  ]
+}

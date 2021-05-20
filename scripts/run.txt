@@ -1,0 +1,4 @@
+spark submit command--
+spark-submit --class com.discovery.apple.pipeline.rawextract.eurosport.EurosportAppleSalesSummaryJob s3://dci-prod-dataengg-datapipeline-eu-west-1/application/apple/master/jar/apple-data-pipeline-assembly-2.0.6.jar -i s3://dci-prod-dne-analytics-live-eu-west-1/data/env/prod-1.7.17 -r -d 2021-05-19
+
+spark-submit --class com.newday.analytics.MovieRatings --jar /user/home/new-day-exercise_2.12-0.1.jar /Users/home/Downloads/ml-1m /Users/gverma/Downloads/ml-1m/output

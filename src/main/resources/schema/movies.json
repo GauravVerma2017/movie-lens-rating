@@ -1,0 +1,8 @@
+{
+  "type" : "struct",
+  "fields" : [
+    { "name" : "movie_id",      "type" : "string",    "nullable" : false },
+    { "name" : "title",         "type" : "string",     "nullable" : true },
+    { "name" : "genres",        "type" : "string",    "nullable" : false }
+  ]
+}
