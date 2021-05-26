@@ -3,7 +3,7 @@ package com.newday.analytics
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
-import org.apache.spark.sql.functions.{max, _}
+import org.apache.spark.sql.functions._
 import org.slf4j.{Logger, LoggerFactory}
 
 object MovieRatings extends Utilities {
@@ -13,8 +13,8 @@ object MovieRatings extends Utilities {
     val inputPath = args(0)
     val outputPath = args(1)
 
-    logger.info(s"input path = ${inputPath}")
-    logger.info(s"input path = ${outputPath}")
+    logger.info(s"input path = $inputPath")
+    logger.info(s"input path = $outputPath")
 
 //    val sparkConfig = new SparkConf()
 //    sparkConfig.setIfMissing("spark.master", "local[4]")
@@ -35,8 +35,11 @@ object MovieRatings extends Utilities {
     ratingsDF.createOrReplaceTempView("ratings_view")
 
     val ratingsUpdatedDF = spark.sql("SELECT movie_id, " +
-                                               "MAX(rating) as max_rating, MIN(rating) as min_Rating, AVG(rating) as avg_Rating " +
-                                               "FROM ratings_view GROUP BY movie_id")
+                                               "MAX(rating) as max_rating, " +
+                                               "MIN(rating) as min_Rating," +
+                                               "AVG(rating) as avg_Rating " +
+                                               "FROM ratings_view GROUP BY movie_id"
+                                    )
 
     val movieRatingsDF = moviesDF.join(ratingsUpdatedDF, moviesDF("movie_id") === ratingsUpdatedDF("movie_id"), "left")
       .select(moviesDF("movie_id")
